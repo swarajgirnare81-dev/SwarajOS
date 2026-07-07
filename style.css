@@ -831,3 +831,94 @@ footer{
 }
 
 }
+
+/* =======================================================
+   DIGITAL CLOCK CSS
+======================================================= */
+
+.clock-container{
+
+    width:100%;
+
+    min-height:70vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:30px 20px;
+
+}
+
+
+.clock-box{
+
+    width:100%;
+
+    max-width:450px;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:0 0 35px rgba(0,229,255,.3);
+
+}
+
+
+#clock{
+
+    font-size:3.5rem;
+
+    font-weight:800;
+
+    color:white;
+
+    letter-spacing:3px;
+
+    text-shadow:0 0 20px cyan;
+
+}
+
+
+#date{
+
+    margin-top:20px;
+
+    font-size:1.2rem;
+
+    color:#d1d5db;
+
+}
+
+
+@media(max-width:480px){
+
+    #clock{
+
+        font-size:2.3rem;
+
+    }
+
+
+    #date{
+
+        font-size:1rem;
+
+    }
+
+}
