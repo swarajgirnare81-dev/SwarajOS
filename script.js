@@ -314,3 +314,85 @@ setInterval(updateClock,1000);
 
 
 updateClock();
+
+/* =======================================================
+   STUDY NOTES JAVASCRIPT
+======================================================= */
+
+const noteInput = document.getElementById("noteInput");
+const saveNote = document.getElementById("saveNote");
+const notesList = document.getElementById("notesList");
+
+
+if(saveNote){
+
+    saveNote.addEventListener("click",()=>{
+
+        const noteText = noteInput.value.trim();
+
+
+        if(noteText !== ""){
+
+
+            const noteCard = document.createElement("div");
+
+            noteCard.className = "note-card";
+
+
+            noteCard.innerHTML = `
+
+                <h3>My Note</h3>
+
+                <p>${noteText}</p>
+
+            `;
+
+
+            notesList.appendChild(noteCard);
+
+
+            noteInput.value = "";
+
+
+            localStorage.setItem(
+                "lastNote",
+                noteText
+            );
+
+
+        }
+
+    });
+
+}
+
+
+/* Load saved note */
+
+window.addEventListener("load",()=>{
+
+    const savedNote = localStorage.getItem("lastNote");
+
+
+    if(savedNote && notesList){
+
+
+        const noteCard = document.createElement("div");
+
+        noteCard.className="note-card";
+
+
+        noteCard.innerHTML = `
+
+            <h3>Saved Note</h3>
+
+            <p>${savedNote}</p>
+
+        `;
+
+
+        notesList.appendChild(noteCard);
+
+    }
+
+});
