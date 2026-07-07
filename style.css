@@ -1,0 +1,639 @@
+/* =======================================================
+   SWARAJOS v1.0
+   Part 1 - Background, Fonts, Layout & Logo
+======================================================= */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Root Colors */
+
+:root{
+
+    --bg1:#09090f;
+    --bg2:#111827;
+    --bg3:#1e293b;
+
+    --blue:#00e5ff;
+    --purple:#8b5cf6;
+    --pink:#ff4fd8;
+    --green:#22c55e;
+    --yellow:#facc15;
+    --orange:#fb923c;
+
+    --white:#ffffff;
+    --glass:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.15);
+
+}
+
+/* Body */
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(135deg,
+    var(--bg1),
+    var(--bg2),
+    var(--bg3));
+
+    color:white;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+}
+
+/* Animated Background */
+
+.background{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+/* Floating Circle 1 */
+
+.background::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    background:
+    radial-gradient(circle,
+    rgba(0,229,255,.35),
+    transparent 70%);
+
+    top:-80px;
+    left:-100px;
+
+    border-radius:50%;
+
+    animation:floatOne 10s ease-in-out infinite;
+
+}
+
+/* Floating Circle 2 */
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    background:
+    radial-gradient(circle,
+    rgba(255,79,216,.30),
+    transparent 70%);
+
+    bottom:-120px;
+    right:-100px;
+
+    border-radius:50%;
+
+    animation:floatTwo 12s ease-in-out infinite;
+
+}
+
+/* Animations */
+
+@keyframes floatOne{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(40px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+@keyframes floatTwo{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-50px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* Main Container */
+
+.container{
+
+    width:92%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:40px 15px;
+
+}
+
+/* SwarajOS Logo */
+
+.logo{
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    margin-top:15px;
+
+    background:linear-gradient(
+    90deg,
+    var(--blue),
+    var(--purple),
+    var(--pink));
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    letter-spacing:2px;
+
+    animation:glow 3s infinite alternate;
+
+}
+
+/* Glow Animation */
+
+@keyframes glow{
+
+from{
+
+filter:drop-shadow(0 0 5px cyan);
+
+}
+
+to{
+
+filter:drop-shadow(0 0 25px #ff4fd8);
+
+}
+
+}
+
+/* Subtitle */
+
+.subtitle{
+
+    margin-top:15px;
+
+    color:#d7d7d7;
+
+    font-size:1.05rem;
+
+    font-weight:400;
+
+    letter-spacing:1px;
+
+  }
+
+/* =======================================================
+   PART 2A - APP GRID
+======================================================= */
+
+.apps{
+
+    margin-top:50px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+
+    gap:25px;
+
+}
+
+/* =======================================================
+   APP CARD
+======================================================= */
+
+.app{
+
+    text-decoration:none;
+
+    color:white;
+
+    background:var(--glass);
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    padding:25px 15px;
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    transition:.4s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:170px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Light Reflection */
+
+.app::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:200%;
+
+    height:100%;
+
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    left:-220%;
+
+    top:0;
+
+    transition:.7s;
+
+}
+
+.app:hover::before{
+
+    left:120%;
+
+}
+
+/* Hover Effect */
+
+.app:hover{
+
+    transform:translateY(-10px) scale(1.05);
+
+    box-shadow:
+        0 0 25px rgba(0,229,255,.5),
+        0 0 50px rgba(139,92,246,.4);
+
+}
+
+/* =======================================================
+   PART 2B - ICONS & TEXT
+======================================================= */
+
+/* Icon */
+
+.icon{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+
+    transition:.4s;
+
+    filter:drop-shadow(0 0 10px rgba(255,255,255,.4));
+
+}
+
+/* App Name */
+
+.app span{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    letter-spacing:.5px;
+
+}
+
+/* Hover Icon Animation */
+
+.app:hover .icon{
+
+    transform:scale(1.2) rotate(8deg);
+
+}
+
+/* Individual Neon Colors */
+
+.app:nth-child(1){
+
+    box-shadow:0 0 15px rgba(0,229,255,.25);
+
+}
+
+.app:nth-child(2){
+
+    box-shadow:0 0 15px rgba(255,79,216,.25);
+
+}
+
+.app:nth-child(3){
+
+    box-shadow:0 0 15px rgba(250,204,21,.25);
+
+}
+
+.app:nth-child(4){
+
+    box-shadow:0 0 15px rgba(34,197,94,.25);
+
+}
+
+.app:nth-child(5){
+
+    box-shadow:0 0 15px rgba(139,92,246,.25);
+
+}
+
+/* Active Effect */
+
+.app:active{
+
+    transform:scale(.95);
+
+}
+
+/* Floating Animation */
+
+.app{
+
+    animation:floatCard 4s ease-in-out infinite;
+
+}
+
+.app:nth-child(2){
+
+    animation-delay:.5s;
+
+}
+
+.app:nth-child(3){
+
+    animation-delay:1s;
+
+}
+
+.app:nth-child(4){
+
+    animation-delay:1.5s;
+
+}
+
+.app:nth-child(5){
+
+    animation-delay:2s;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/* =======================================================
+   PART 3 - FOOTER & RESPONSIVE DESIGN
+======================================================= */
+
+/* Footer */
+
+footer{
+
+    margin-top:60px;
+
+    color:#bdbdbd;
+
+    font-size:.9rem;
+
+    letter-spacing:1px;
+
+    text-align:center;
+
+    padding:20px;
+
+    opacity:.85;
+
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111827;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+    var(--blue),
+    var(--purple));
+
+    border-radius:20px;
+
+}
+
+/* Text Selection */
+
+::selection{
+
+    background:var(--purple);
+
+    color:white;
+
+}
+
+/* Smooth Scrolling */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* Mobile Devices */
+
+@media(max-width:768px){
+
+.logo{
+
+    font-size:2.3rem;
+
+}
+
+.subtitle{
+
+    font-size:.95rem;
+
+}
+
+.apps{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.app{
+
+    min-height:150px;
+
+    padding:20px;
+
+}
+
+.icon{
+
+    font-size:45px;
+
+}
+
+footer{
+
+    font-size:.8rem;
+
+}
+
+}
+
+/* Small Phones */
+
+@media(max-width:480px){
+
+.container{
+
+    padding:25px 12px;
+
+}
+
+.logo{
+
+    font-size:2rem;
+
+}
+
+.apps{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.app{
+
+    min-height:135px;
+
+}
+
+.icon{
+
+    font-size:40px;
+
+}
+
+.app span{
+
+    font-size:.9rem;
+
+}
+
+}
+
+/* Desktop */
+
+@media(min-width:1000px){
+
+.apps{
+
+    grid-template-columns:repeat(5,1fr);
+
+}
+
+}
